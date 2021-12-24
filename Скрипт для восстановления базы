@@ -1,3 +1,4 @@
+-------------------------------------------------------
 RESTORE DATABASE weather
     FROM DISK = '/home/asumin/weatherdb.bak'
     WITH NORECOVERY,
@@ -8,3 +9,11 @@ TO '/home/asumin/db/weather.ldf';
 RESTORE LOG weather
     FROM DISK = '/home/asumin/weatherdb.bak'
     WITH RECOVERY;
+--------------Без restore log-----------------------    
+RESTORE DATABASE weather
+    FROM DISK = '/home/asumin/weatherdb.bak'
+    WITH RECOVERY,
+      MOVE 'weatherTable' TO
+'/home/asumin/db/weather.mdf',
+      MOVE 'weatherTable_log'
+TO '/home/asumin/db/weather.ldf';
