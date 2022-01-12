@@ -1,0 +1,20 @@
+DECLARE @thedate date = '2022-01-11'
+DECLARE @thedate1 date = '2022-01-11'
+SELECT city.name, 
+    image.data, 
+    osadki.description, 
+    summary.temperature, 
+	  summary.feels_like, 
+    summary.wind, 
+    summary.humidity, 
+    summary.date_time
+	FROM 
+    [dbo].[city], 
+    [dbo].[image], 
+    [dbo].[osadki], 
+    [dbo].[summary]
+	WHERE 
+        city.id = osadki.id_city 
+    and city.id = summary.id_city 
+    and dbo.image.id = osadki.id_image 
+    and (@thedate <= summary.date_time AND @thedate1 >= summary.date_time)
