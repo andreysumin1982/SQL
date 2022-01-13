@@ -1,0 +1,58 @@
+    Confirm the SQL Server system administrator password: 
+Configuring SQL Server...
+
+This program has encountered a fatal error and cannot continue running at Mon Apr  1 16:06:07 2019
+The following diagnostic information is available:
+
+       Reason: 0x00000007
+      Message: Cannot open or read the persistent registry: \SystemRoot\security.hiv.
+      Process: 19600 - sqlservr
+       Thread: 19604 (application thread 0x4)
+  Instance Id: 7ebfcf27-db60-460d-afd3-6d852b70069e
+     Crash Id: d99ba388-d323-43f3-b758-e116f42bb2e8
+  Build stamp: 70437f6583b8ef39b1ef70539ef84690980315dc7a4436c9c40015f28610e4aa
+ Distribution: Ubuntu 16.04.6 LTS
+   Processors: 8
+ Total Memory: 16673366016 bytes
+    Timestamp: Mon Apr  1 16:06:07 2019
+
+Ubuntu 16.04.6 LTS
+Capturing core dump and information to /var/opt/mssql/log...
+Hint: You are currently not seeing messages from other users and the system.
+      Users in the 'systemd-journal' group can see all messages. Pass -q to
+      turn off this notice.
+No journal files were opened due to insufficient permissions.
+Hint: You are currently not seeing messages from other users and the system.
+      Users in the 'systemd-journal' group can see all messages. Pass -q to
+      turn off this notice.
+No journal files were opened due to insufficient permissions.
+/usr/bin/tail: cannot open '/var/log/syslog' for reading: Permission denied
+Attempting to capture a dump with paldumper
+Captured a dump with paldumper
+Core dump and information are being compressed in the background. When
+complete, they can be found in the following location:
+  /var/opt/mssql/log/core.sqlservr.04_01_2019_16_06_07.19600.tbz2
+Initial setup of Microsoft SQL Server failed. Please consult the ERRORLOG
+in /var/opt/mssql/log for more information.
+
+также я нашел этот пост , который выглядит так, как будто у этого парня была похожая проблема, но, к сожалению, никакого решения
+
+кто-нибудь знает, как решить мою проблему?
+
+Спасибо
+
+Edit: после реализации ответа я получил еще одну ошибку:
+
+Confirm the SQL Server system administrator password: 
+Configuring SQL Server...
+
+Initial setup of Microsoft SQL Server failed. Please consult the ERRORLOG in /var/opt/mssql/log for more information
+
+Чтобы немного очистить беспорядок, который у меня был в папке журнала, я решил полностью удалить его, используя
+
+---------------------------------------------
+    sudo rm -rf /var/opt/mssql/log 
+---------------------------------------------
+
+и снова запустить установку, по-видимому, это решило мою последнюю проблему и, наконец,: Настройка успешно завершена. Теперь начинается SQL Server.
+
