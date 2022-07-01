@@ -1,0 +1,6 @@
+Изменить тип столбца time на time without time zone.
+
+alter table air alter COLUMN time type time USING(time::time without time zone);
+
+Автоматическая вставка времени в поле.
+alter table air alter COLUMN time set default current_time;
