@@ -1,0 +1,33 @@
+CREATE TABLE
+
+SQL-команда для создания новой таблицы:
+
+CREATE TABLE <table_name1> (
+  <col_name1><col_type1>,
+  <col_name2><col_type2>,
+  <col_name3><col_type3>
+  PRIMARY KEY(<col_name1>),
+  FOREIGN KEY(<col_name2>) REFERENCES <table_name2>(<col_name2>)
+);
+
+Ограничения целостности при использовании CREATE TABLE
+
+Может понадобиться создать ограничения для определённых столбцов в таблице. При создании таблицы можно задать следующие ограничения:
+
+    ячейка таблицы не может иметь значение NULL;
+    первичный ключ — PRIMARY KEY(col_name1, col_name2, …);
+    внешний ключ — FOREIGN KEY(col_namex1, …, col_namexn) REFERENCES table_name(col_namex1, …, col_namexn).
+
+Можно задать больше одного первичного ключа. В этом случае получится составной первичный ключ.
+Пример
+
+Создайте таблицу «instructor»:
+
+CREATE TABLE instructor (
+  ID CHAR(5),
+  name VARCHAR(20) NOT NULL,
+  dept_name VARCHAR(20),
+  salary NUMERIC(8,2),
+  PRIMARY KEY (ID),
+  FOREIGN KEY (dept_name) REFERENCES department(dept_name)
+);

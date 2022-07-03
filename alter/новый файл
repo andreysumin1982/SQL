@@ -1,0 +1,60 @@
+Создать первичный ключ - используя оператор ALTER TABLE
+
+Вы можете создать первичный ключ в PostgreSQL с помощью оператора ALTER TABLE.
+Синтаксис
+
+синтаксис для создания первичного ключа с помощью оператора ALTER TABLE в PostgreSQL:
+ALTER TABLE table_name
+
+  ADD CONSTRAINT [ constraint_name ]
+
+    PRIMARY KEY (index_col1, index_col2,... index_col_n)
+
+table_name
+    Имя таблицы для изменения.
+constraint_name
+    Название первичного ключа.
+index_col1, index_col2,... index_col_n
+    Столбцы, составляющие первичный ключ.
+
+Пример
+
+Рассмотрим пример того, как создать первичный ключ, используя оператор ALTER TABLE в PostgreSQL.
+ALTER TABLE order_details
+
+  ADD CONSTRAINT order_details_pk
+
+    PRIMARY KEY (order_detail_id);
+
+В этом примере мы создали первичный ключ для существующей таблицы order_details с именем order_details_pk. Он состоит из столбца order_detail_id.
+Мы также можем создать первичный ключ с более чем одним полем, как в примере ниже:
+ALTER TABLE order_details
+
+  ADD CONSTRAINT order_details_pk
+
+    PRIMARY KEY (order_date, customer_id);
+
+В этом примере мы создали первичный ключ contacts_pk, который состоит из комбинации столбцов last_name и first_name.
+Удалить первичный ключ
+
+Вы можете удалить первичный ключ в PostgreSQL, используя оператор ALTER TABLE.
+Синтаксис
+
+Синтаксис удаления первичного ключа в PostgreSQL:
+ALTER TABLE table_name
+
+  DROP CONSTRAINT constraint_name;
+
+table_name
+    Имя таблицы для изменения.
+constraint_name
+    Имя первичного ключа, который вы хотите удалить.
+
+Пример
+
+Рассмотрим пример того, как удалить первичный ключ с помощью оператора ALTER TABLE в PostgreSQL.
+ALTER TABLE order_details
+
+  DROP CONSTRAINT order_details_pk;
+
+В этом примере мы удалили первичный ключ в таблице contacts. Нам не нужно указывать имя первичного ключа, поскольку в таблице он может быть только один.
